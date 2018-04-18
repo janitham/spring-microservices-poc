@@ -1,18 +1,14 @@
-spring:
-  application:
-    name: group-service
-  cloud:
-    config:
-      uri: http://config:8888
-      fail-fast: true
-      password: 1234
-      username: user
+server:  
+  port: ${PORT:3333}
 
-eureka:
-  instance:
-    prefer-ip-address: true
+eureka:  
   client:
-    registerWithEureka: false
-    fetchRegistry: false
-    server:
-      waitTimeInMsWhenSyncEmpty: 0
+    serviceUrl:
+      defaultZone: ${DISCOVERY_URL:http://localhost:8761}/eureka/
+  instance:
+    leaseRenewalIntervalInSeconds: 1
+    leaseExpirationDurationInSeconds: 2
+          
+ribbon:
+  eureka:
+    enabled: true

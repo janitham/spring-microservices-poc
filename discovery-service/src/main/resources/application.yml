@@ -1,9 +1,13 @@
-spring:
-  application:
-    name: discovery
-  cloud:
-    config:
-      uri: http://localhost:8888
-      fail-fast: true
-#      password: 1234
-#      username: user
+server:
+  port: 8761
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+        defaultZone: http://localhost:8761/eureka/
+    registerWithEureka: false
+    fetchRegistry: false
+    server:
+      waitTimeInMsWhenSyncEmpty: 0
