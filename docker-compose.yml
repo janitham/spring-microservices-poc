@@ -19,5 +19,18 @@ services:
     networks:
       - user-group-network
 
+  mic-test-db:
+    image: mysql
+    restart: always
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: mic-test-db
+      MYSQL_USER: testUser
+      MYSQL_PASSWORD: '1234'
+    networks:
+      - user-group-network
+
 networks:
   user-group-network:
